@@ -6,7 +6,7 @@ import { useLoading } from '@/contexts/loadingContext';
 
 import { useRouter } from 'next/router';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { socket } from '../utils/socket';
+import { socket } from '../../utils/socket';
 import { useSocket } from '@/contexts/SocketContext';
 type TermProfilePageWithLayOut = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;

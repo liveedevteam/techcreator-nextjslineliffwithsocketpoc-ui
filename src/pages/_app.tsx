@@ -7,7 +7,7 @@ import Head from 'next/head';
 import { Box } from '@mui/material';
 import ThemeProviderComponent from '@/components/ThemeProvider';
 import { createTheme, ThemeProvider } from '@mui/material';
-import { socket } from './utils/socket';
+import { socket } from '@/utils/socket';
 import { SocketProvider } from '@/contexts/SocketContext';
 import { useSocket } from '@/contexts/SocketContext';
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
@@ -24,7 +24,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
         console.error('Error initializing LIFF:', error);
       }
       if (!liff.isLoggedIn()) {
-        liff.login({ redirectUri: window.location.href });
+        liff.login();
       } else {
         const accessToken = liff.getAccessToken();
         if (accessToken) {
