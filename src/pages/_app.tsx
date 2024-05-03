@@ -19,7 +19,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     const initLiff = async () => {
       const { default: liff } = await import('@line/liff');
       try {
-        await liff.init({ liffId: '1657217843-yqAgWBPM' });
+        await liff.init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID as string });
       } catch (error) {
         console.error('Error initializing LIFF:', error);
       }
