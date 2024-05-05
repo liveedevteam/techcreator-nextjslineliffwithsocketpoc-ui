@@ -26,6 +26,8 @@ const TermProfile: TermProfilePageWithLayOut = () => {
 
 
   const handleEmitStart = () => {
+    const token = localStorage.getItem('accessToken')
+    socket.auth = { token };
     socket.emit('joinRoom', localStorage.getItem('userId'));
     socket.emit('start')
   }

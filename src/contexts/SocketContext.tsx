@@ -1,5 +1,6 @@
 // src/contexts/SocketContext.tsx
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { socket } from '../utils/socket';
 
 interface SocketContextType {
   data: any;  // Consider specifying a more precise type instead of 'any'
@@ -26,6 +27,13 @@ export const SocketProvider: React.FC<Props> = ({ children }) => {
   const updateData = (newData: any) => {
     setData(newData);
   };
+
+  useEffect(() => {
+    let token = localStorage.getItem('accessToken');
+    if (token) {
+      socket.auth = { token };
+    }
+  }, []);
 
   return (
     <SocketContext.Provider value={{ data, updateData }}>
